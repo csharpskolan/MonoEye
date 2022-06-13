@@ -23,6 +23,7 @@ namespace MonoEye.Common
             short visibleHeightInBlocks = data.VisibleHeightInBlocks;
             short visibleWidthInBlocks = data.VisibleWidthInBlocks;
             int flipX = data.FlipFlag;
+            var colors = new Color[texture.Width * texture.Height];
 
             for (int y = 0; y < visibleHeightInBlocks; y++)
             {
@@ -43,20 +44,19 @@ namespace MonoEye.Common
                     int blockFlip = tile & 0x4000 ^ flipX;
                     blockIndex = tile & 0x3fff;
 
-                    DrawBlock(texture, xpos * 8, ypos * 8, blockIndex, blockFlip > 0, offsetX, offsetY);
-
+                    DrawBlock(colors, texture.Width, xpos * 8, ypos * 8, blockIndex, blockFlip > 0, offsetX, offsetY);
                     offset++;
                 }
                 offset += data.SkipValue;
             }
+
+            texture.SetData(colors);
         }
 
-        private void DrawBlock(Texture2D texture, int xpos, int ypos, int blockIndex,
+        private void DrawBlock(Color[] colors, int width, int xpos, int ypos, int blockIndex,
             bool isFlipped, int offsetX = 0, int offsetY = 0)
         {
             var blockData = Vcn.Blocks[blockIndex];
-            var colors = new Color[texture.Width * texture.Height];
-            texture.GetData(colors);
 
             for (int y = 0; y < 8; y++)
                 for (int x = 0; x < 8; x++)
@@ -65,10 +65,8 @@ namespace MonoEye.Common
                     if (val == 0)
                         continue;
                     var col = Palette.Colors[Vcn.WallLookup[val]];
-                    colors[xpos + x + offsetX + (ypos + y + offsetY) * texture.Width] = col;
+                    colors[xpos + x + offsetX + (ypos + y + offsetY) * width] = col;
                 }
-
-            texture.SetData(colors);
         }
 
         public Texture2D DrawBackdrop()
