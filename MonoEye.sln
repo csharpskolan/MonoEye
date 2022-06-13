@@ -5,6 +5,10 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoEye.Game", "MonoEye.Game\MonoEye.Game.csproj", "{55F036AB-675E-4EED-8265-5B1E59F7D71B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoEye.Common", "MonoEye.Common\MonoEye.Common.csproj", "{575E62CC-585D-476C-BA7F-CB725D277D45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PakExtract", "PakExtract\PakExtract.csproj", "{3BEADA8A-0C4C-4B1A-A68C-FDC260AE8F5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{55F036AB-675E-4EED-8265-5B1E59F7D71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55F036AB-675E-4EED-8265-5B1E59F7D71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55F036AB-675E-4EED-8265-5B1E59F7D71B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{575E62CC-585D-476C-BA7F-CB725D277D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{575E62CC-585D-476C-BA7F-CB725D277D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{575E62CC-585D-476C-BA7F-CB725D277D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{575E62CC-585D-476C-BA7F-CB725D277D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BEADA8A-0C4C-4B1A-A68C-FDC260AE8F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BEADA8A-0C4C-4B1A-A68C-FDC260AE8F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BEADA8A-0C4C-4B1A-A68C-FDC260AE8F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BEADA8A-0C4C-4B1A-A68C-FDC260AE8F5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
