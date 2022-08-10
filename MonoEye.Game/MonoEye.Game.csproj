@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
   </PropertyGroup>
@@ -26,5 +26,31 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonoEye.Common\MonoEye.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Paks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Paks\EOBDATA1.PAK" Link="Paks\EOBDATA1.PAK">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Paks\EOBDATA2.PAK" Link="Paks\EOBDATA2.PAK">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Paks\EOBDATA3.PAK" Link="Paks\EOBDATA3.PAK">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Paks\EOBDATA4.PAK" Link="Paks\EOBDATA4.PAK">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Paks\EOBDATA5.PAK" Link="Paks\EOBDATA5.PAK">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Paks\EOBDATA6.PAK" Link="Paks\EOBDATA6.PAK">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
