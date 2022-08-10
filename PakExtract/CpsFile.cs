@@ -105,17 +105,28 @@ namespace PakExtract
 
         public void SaveAsPng(string filename, PaletteFile palette, bool transparent = false)
         {
+            var bmp = RenderBitmap(palette, transparent);
+            bmp.Save(filename, ImageFormat.Png);
+        }
+
+        public Bitmap GetBitmap(PaletteFile palette, bool transparent = false)
+        {
+            return RenderBitmap(palette, transparent);
+        }
+        private Bitmap RenderBitmap(PaletteFile palette, bool transparent = false)
+        {
             Bitmap bmp = new Bitmap(320, 200);
 
             for (int i = 0; i < RawData.Length; i++)
             {
-                if(transparent && RawData[i] == 0)
+                if (transparent && RawData[i] == 0)
                     bmp.SetPixel(i % 320, i / 320, Color.Transparent);
                 else
                     bmp.SetPixel(i % 320, i / 320, palette.Colors[RawData[i]]);
 
             }
-            bmp.Save(filename, ImageFormat.Png);
+
+            return bmp;
         }
 
         public static CpsFile FromData(byte[] data)

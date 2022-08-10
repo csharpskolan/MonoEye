@@ -40,7 +40,7 @@ namespace MonoEye.Common
                 var decorationRectangle = new DecorationRectangle();
                 decorationRectangle.X = (data[index++] + (data[index++] << 8)) * 8;
                 decorationRectangle.Y = data[index++] + (data[index++] << 8);
-                decorationRectangle.Width = (data[index++] + (data[index++] << 8) + 1) * 8;
+                decorationRectangle.Width = (data[index++] + (data[index++] << 8)) * 8;
                 decorationRectangle.Height = data[index++] + (data[index++] << 8);
 
                 DecorationRectangles.Add(decorationRectangle);
@@ -51,29 +51,5 @@ namespace MonoEye.Common
         {
             return new DatFile(data);
         }
-    }
-
-    public class Decoration
-    {
-        public byte[] RectangleIndices;
-        public byte LinkToNextDecoration;
-        public byte Flags;
-        public int[] XCoords;
-        public int[] YCoords;
-
-        public Decoration()
-        {
-            RectangleIndices = new byte[10];
-            XCoords = new int[10];
-            YCoords = new int[10];
-        }
-    }
-
-    public struct DecorationRectangle
-    {
-        public int X;
-        public int Y;
-        public int Width;
-        public int Height;
     }
 }

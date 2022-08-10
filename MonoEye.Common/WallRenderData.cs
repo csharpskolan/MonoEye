@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace MonoEye
+namespace MonoEye.Common
 {
     public struct WallRenderData
     {
@@ -44,9 +44,9 @@ namespace MonoEye
                 new WallRenderData(104, 87, 5, 1, 2, 1, 3,-3, 3,-1,  0),/* G-west */
                 new WallRenderData(133, 66, 5, 2, 4, 0, 3, 2, 2, 3,-12),/* B-south */
                 new WallRenderData(129, 68, 5, 6, 0, 0, 3, 1, 2, 3, -6),/* C-south */
-                new WallRenderData(129, 74, 5, 6, 0, 0, 3, 0, 2, 3, 12),/* D-south */
+                new WallRenderData(129, 74, 5, 6, 0, 0, 3, 0, 2, 3,  0),/* D-south */
                 new WallRenderData(129, 80, 5, 6, 0, 0, 3,-1, 2, 3,  6),/* E-south */
-                new WallRenderData(129, 86, 5, 2, 4, 0, 3,-2, 2, 3,  0),/* F-south */
+                new WallRenderData(129, 86, 5, 2, 4, 0, 3,-2, 2, 3, 12),/* F-south */
                 new WallRenderData(117, 66, 6, 2, 0, 0, 2, 2, 1, 8,  0),/* H-east */
                 new WallRenderData(81,  50, 8, 2, 0, 0, 2, 1, 1, 6,  0),/* I-east */
                 new WallRenderData(81,  58, 8, 2, 0, 1, 2,-1, 3, 6,  0),/* K-west */
@@ -56,8 +56,8 @@ namespace MonoEye
                 new WallRenderData(159, 60, 8, 6, 4, 0, 2,-1, 2, 2, 10),/* K-south */
                 new WallRenderData(45,  25,12, 3, 0, 0, 1, 1, 1, 5,  0),/* M-east */
                 new WallRenderData(45,  38,12, 3, 0, 1, 1,-1, 3, 5,  0), /* O-west */
-                new WallRenderData(252, 22,12, 3,13, 0, 1, 1, 2, 1,-13),/* M-south */
-                new WallRenderData(239, 41,12, 3,13, 0, 1,-1, 2, 1, 13),/* O-south */
+                new WallRenderData(252, 22,12, 3,13, 0, 1, 1, 2, 1,-16),/* M-south */
+                new WallRenderData(239, 41,12, 3,13, 0, 1,-1, 2, 1, 16),/* O-south */
                 new WallRenderData(239, 25,12,16, 0, 0, 1, 0, 2, 1,  0),/* N-south */
                 new WallRenderData(0,    0,15, 3, 0, 0, 0, 1, 1, 4,  0),/* P-east */
                 new WallRenderData(0,   19,15, 3, 0, 1, 0,-1, 3, 4,  0),/* Q-west */

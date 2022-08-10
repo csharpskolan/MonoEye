@@ -1,4 +1,4 @@
-﻿namespace MonoEye
+﻿namespace MonoEye.Common
 {
     public class VmpFile
     {

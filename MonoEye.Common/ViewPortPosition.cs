@@ -13,5 +13,6 @@ namespace MonoEye.Common
         public int DirectionOffset { get; set; }
         public int DecorationOffset { get; set; }
         public int DecorationXDelta { get; set; }
+        public short FlippedDecoration { get; set; }
     }
 }

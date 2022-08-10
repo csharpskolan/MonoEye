@@ -68,7 +68,8 @@ namespace MonoEye.Game
                     StepsLeft = data.StepsLeft,
                     DirectionOffset = data.DirectionOffset,
                     DecorationOffset = data.DecorationWallOffset,
-                    DecorationXDelta = data.DecorationXDelta
+                    DecorationXDelta = data.DecorationXDelta,
+                    FlippedDecoration = data.FlipFlag
                 };
 
                 for (int i = 0; i < vmpFile.NrOfWallTypes; i++)
@@ -162,28 +163,57 @@ namespace MonoEye.Game
                     continue;
 
                 int wallType = _level.Blocks[index.X, index.Y].GetFace(_direction, vp.DirectionOffset);
+
                 if (wallType > 6)
                 {
+                    // problem level 1 missing wallType 8 (?)
+                    if (!_infFile.WallMappings.ContainsKey(wallType))
+                        continue;
+
                     //wallmappaing
                     var mapping = _infFile.WallMappings[wallType];
-                    var dec = _datFile.Decorations[mapping.DecorationID];
+                    var decId = mapping.DecorationID;
 
                     if (vp.DecorationOffset < 0)
                         continue;
 
-                    var rectIndex = dec.RectangleIndices[vp.DecorationOffset];
-
-                    if (rectIndex == 0xFF)
-                        continue;
-
-                    var rect = _datFile.DecorationRectangles[rectIndex];
-                    var x = dec.XCoords[vp.DecorationOffset];
-                    var y = dec.YCoords[vp.DecorationOffset];
-
                     if (mapping.WallID > 0)
                         _spriteBatch.Draw(vp.Texture[mapping.WallID - 1], vp.DrawPosition * _scale, null, Color.White, 0f, Vector2.Zero, _scale, SpriteEffects.None, 0f);
-                    _spriteBatch.Draw(_decorationTextures[mapping.Texture], new Vector2(x + vp.DecorationXDelta * 8, y) * _scale,
-                        new Rectangle(rect.X, rect.Y, rect.Width, rect.Height), Color.White, 0f, Vector2.Zero, _scale, SpriteEffects.None, 0f);
+
+                    while (decId != 0 && decId != 0xFF)
+                    {
+                        var dec = _datFile.Decorations[decId];
+                        var rectIndex = dec.RectangleIndices[vp.DecorationOffset];
+
+                        if (rectIndex == 0xFF)
+                            break;
+
+                        var rect = _datFile.DecorationRectangles[rectIndex];
+                        var x = dec.XCoords[vp.DecorationOffset];
+                        var y = dec.YCoords[vp.DecorationOffset];
+
+                        var calculatedX = x + vp.DecorationXDelta * 8;
+                        var effect = SpriteEffects.None;
+
+                        //decoration flipped?
+                        if ((dec.Flags & 0x01) != 0)
+                        {
+                            calculatedX = calculatedX + rect.Width;
+                            effect = SpriteEffects.FlipHorizontally;
+                        }
+
+                        //wall flipped?
+                        if(vp.FlippedDecoration == 1)
+                        {
+                            calculatedX = 22*8 - calculatedX - rect.Width;
+                            effect = SpriteEffects.FlipHorizontally;
+                        }
+
+                        _spriteBatch.Draw(_decorationTextures[mapping.Texture], new Vector2(calculatedX, y) * _scale,
+                            new Rectangle(rect.X, rect.Y, rect.Width, rect.Height), Color.White, 0f, Vector2.Zero, _scale, effect, 0f);
+
+                        decId = dec.LinkToNextDecoration;
+                    }
                 }
                 else
                     _spriteBatch.Draw(vp.Texture[wallType - 1], vp.DrawPosition * _scale, null, Color.White, 0f, Vector2.Zero, _scale, SpriteEffects.None, 0f);
